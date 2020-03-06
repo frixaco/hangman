@@ -12,4 +12,4 @@ export const words = [
   "r",
   "ruby"
 ]
-export const generateRandomWord = () => words[Math.floor(Math.random() * 4)]
+export const generateRandomWord = () => words[Math.floor(Math.random() * 12)]

@@ -16,7 +16,8 @@ class Hangman extends React.Component {
       word: generateRandomWord(),
       currWord: "",
       gameStat: "",
-      prevWord: ""
+      prevWord: "",
+      lastImg: 0
     }
     window.addEventListener("keydown", this.handleKeyPress)
   }
@@ -45,13 +46,13 @@ class Hangman extends React.Component {
   handleReset = stat => {
     const newWord = generateRandomWord()
     this.setState({
-      wrongGuesses: 0,
       word: newWord,
+      wrongGuesses: 0,
       currWord: newWord
         .split("")
         .map(l => "_")
         .join(""),
-      gameStat: stat ? true : false
+      lastImg: 0
     })
   }
 
@@ -65,7 +66,8 @@ class Hangman extends React.Component {
         .map(l => "_")
         .join(""),
       gameStat: "",
-      prevWord: newWord
+      prevWord: newWord,
+      lastImg: 0
     })
   }
 
@@ -81,15 +83,18 @@ class Hangman extends React.Component {
   }
 
   loseCondition = letter => {
-    if (this.state.wrongGuesses === 7) {
-      this.handleReset(false)
+    if (this.state.wrongGuesses === 6) {
+      this.setState({
+        gameStat: false
+      })
     }
   }
 
   checkLetter = letter => {
     if (!this.state.word.includes(letter)) {
       this.setState({
-        wrongGuesses: this.state.wrongGuesses + 1
+        wrongGuesses: this.state.wrongGuesses + 1,
+        lastImg: this.state.lastImg + 1
       })
     }
 
@@ -104,17 +109,19 @@ class Hangman extends React.Component {
       currWord: currentW
     })
     if (currentW === this.state.word) {
-      this.handleReset(true)
+      this.setState({
+        gameStat: true
+      })
     }
   }
 
   render() {
     const { wrongGuesses } = this.state
     const word = this.state.prevWord
-
+    const lastimage = images[this.state.lastImg]
     const showimg = (
       <div className="showimg">
-        <img src={images[this.state.wrongGuesses]} alt="hangman-img" />
+        <img src={lastimage} alt="hangman-img" />
       </div>
     )
     const win = (
@@ -133,7 +140,9 @@ class Hangman extends React.Component {
       <div className="game-status">
         {showimg}
         <p className="letters">{word}</p>
-        <p style={{ color: "#ffc107" }}>YOU LOSE</p>
+        <p style={{ color: "#ffc107" }} className="winlose">
+          YOU LOSE
+        </p>
         <button className="winlose-btn" onClick={this.handleWLExit}>
           Restart
         </button>
