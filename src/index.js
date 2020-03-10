@@ -1,6 +1,6 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import "./index.css"
-import Hangman from "./Hangman"
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import Hangman from './Hangman';
 
-ReactDOM.render(<Hangman />, document.getElementById("root"))
+ReactDOM.render(<Hangman />, document.getElementById('root'));

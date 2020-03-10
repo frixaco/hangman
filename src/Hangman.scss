@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap');
 
 * {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   line-height: 1.5;
 }
 
@@ -87,14 +87,17 @@ button {
       display: flex;
       flex-direction: column;
       flex: 0 1 60%;
-
-      .reset {
-        width: 10rem;
-        padding-bottom: 10px;
-        margin: 20px auto;
-      }
+      color: yellow;
     }
   }
+}
+
+.game-status {
+  width: 100%;
+  align-items: center;
+  justify-items: center;
+  display: flex;
+  flex-direction: column;
 }
 .btn {
   border: 0;
@@ -127,12 +130,12 @@ button {
   }
 }
 
-.game-status {
-  width: 100%;
-  align-items: center;
-  justify-items: center;
+.letters {
   display: flex;
-  flex-direction: column;
+  font-size: 1.5rem;
+  color: #07ffc9;
+  letter-spacing: 0.7em;
+  justify-content: center;
 }
 
 .checked {
@@ -140,17 +143,16 @@ button {
   border-color: #ff1100;
   box-shadow: 0 0 40px #ff1100;
 }
-
-.winlose-btn {
+.btn-reset {
   text-align: center;
-  width: 180px;
-  margin: 0;
+  width: fit-content;
   border: 0;
   border-radius: 10px;
   background-color: #07ffc9;
-  height: 4.8rem;
-  padding-top: 10px;
+  height: 3.6rem;
+  padding-top: 7px 10px 0;
   font-size: 2.5rem;
+  margin: 50px auto 20px;
   cursor: pointer;
 
   &:hover {
@@ -158,31 +160,13 @@ button {
   }
 
   @media screen and (max-width: 640px) {
-    width: 3rem;
     font-size: 1.5rem;
     height: 3rem;
-    padding: 0;
   }
 
   @media screen and (max-width: 400px) {
-    width: 2rem;
     height: 2rem;
-    padding: 0;
     font-size: 1rem;
-    margin: 5px;
+    margin: 20px auto 20px;
   }
-}
-
-.winlose {
-  padding: 0;
-  margin-top: 0;
-  margin-bottom: 20px;
-}
-
-.letters {
-  display: flex;
-  font-size: 1.5rem;
-  color: #07ffc9;
-  letter-spacing: 0.7em;
-  justify-content: center;
 }
