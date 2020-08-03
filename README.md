@@ -1,4 +1,6 @@
 ### Hangman Game made with React
 
-* Keyboard input is possible
-* Responsive layout
+Overview:
+* guess the programming language
+* keyboard input is possible
+* responsive layout
